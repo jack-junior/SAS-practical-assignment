@@ -1,3 +1,8 @@
+/* ====================================================
+   Assignment 1 - Import and Explore Data
+   ==================================================== */
+
+
 /* 1. Create user-defined library */
 libname data '/home/u64176007/sas_pratical_assignment/data';
 
@@ -13,7 +18,7 @@ run;
 ods escapechar="^";
 
 /* 4. Define PDF output */
-ods pdf file="/home/u64176007/sas_pratical_assignment/assignment_1_import_explore/assigment_1_output.pdf"
+ods pdf file="/home/u64176007/sas_pratical_assignment/assignment_1_import_explore/assignment_1_output.pdf"
         style=journal;
 
 /* Disable automatic page breaks */
