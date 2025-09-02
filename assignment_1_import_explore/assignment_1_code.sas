@@ -1,8 +1,8 @@
 /* 1. Create user-defined library */
-libname data '/home/u64176007/SAS pratical assinment/data';
+libname data '/home/u64176007/sas_pratical_assignment/data';
 
 /* 2. Import CSV */
-proc import datafile="/home/u64176007/SAS pratical assinment/data/heart.csv"
+proc import datafile="/home/u64176007/sas_pratical_assignment/data/heart.csv"
     out=data.heart
     dbms=csv
     replace;
@@ -13,7 +13,7 @@ run;
 ods escapechar="^";
 
 /* 4. Define PDF output */
-ods pdf file="/home/u64176007/SAS pratical assinment/assignment1_import_explore/results/assigment_1_output.pdf"
+ods pdf file="/home/u64176007/sas_pratical_assignment/assignment_1_import_explore/assigment_1_output.pdf"
         style=journal;
 
 /* Disable automatic page breaks */
