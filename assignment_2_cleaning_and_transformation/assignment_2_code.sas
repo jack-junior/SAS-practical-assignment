@@ -4,11 +4,19 @@
    ID       : RA2422021010003
    Program  : MSc Epidemiology & Biostatistics
    ==================================================== */
+  
 
 /* ----------------------------------------------------
    Step 1. Setup ODS for Output
    ---------------------------------------------------- */
-
+proc odstext;
+    p "Assignment 3 - Data Analysis" / style=[font_weight=bold];
+    p "Author   : Gayi Komi Selassi";
+    p "ID       : RA2422021010003";
+    p "Program  : MSc Epidemiology & Biostatistics";
+    p "Portfolio: ^{style [url='https://sites.google.com/view/gayikomiselassi/home'] Click Here}";
+ run; 
+ 
 /* Escape character for hyperlinks */
 ods escapechar="^";
 
@@ -23,18 +31,19 @@ ods pdf startpage=never;
 footnote j=l "GAYI KOMI SELASSI, RA2422021010003, MSc Epidemiology & Biostatistics";
 
 /* Cover page title */
-title "Exploratory Analysis of the HEART Dataset: Data Cleaning and Transformation";
+title "Exploratory Analysis of the HEART Dataset: Assignment 2";
 
-/* Links to GitHub and Portfolio */
+/* Links to GitHub*/
 proc odstext;
     p "Access the GitHub Repository: ^{style [url='https://github.com/jack-junior/SAS-practical-assignment'] Click Here}";
-    p "Portfolio: ^{style [url='https://sites.google.com/view/gayikomiselassi/home'] Click Here}";
 run;
 
 
 /* ----------------------------------------------------
    Step 2. Create New Variables (Age_Group, Heart_Disease)
    ---------------------------------------------------- */
+/* Define library */
+libname data '/home/u64176007/sas_pratical_assignment/data';
 
 data data.data_assignment_2;
    set data.heart;
@@ -58,7 +67,7 @@ run;
    ---------------------------------------------------- */
 
 proc odstext;
-    p "First 20 Observations of the new created variables:" / style=[font_weight=bold];
+    p "1. First 20 Observations of the new created variables:" / style=[font_weight=bold];
 run;
 
 proc print data=data.data_assignment_2(obs=20) label;
@@ -85,7 +94,7 @@ ods pdf startpage=now;
    ---------------------------------------------------- */
 
 proc odstext;
-    p "Check for missing values in the new variables using missin option in te frequency procedure :" / style=[font_weight=bold];
+    p "2. Check for missing values in the new variables using missin option in te frequency procedure :" / style=[font_weight=bold];
 run;
 
 proc freq data=data.data_assignment_2;
@@ -98,9 +107,18 @@ proc odstext;
     
 run;
 
+/* ----------------------------------------------------
+   Step 5. Add References (Links)
+   ---------------------------------------------------- */
+
+proc odstext;
+    p "GitHub Repository: ^{style [url='https://github.com/jack-junior/SAS-practical-assignment'] Click Here}";
+    p "Portfolio: ^{style [url='https://sites.google.com/view/gayikomiselassi/home'] Click Here}";
+run;
+
 
 /* ----------------------------------------------------
-   Step 5. Close Output
+   Step 6. Close Output
    ---------------------------------------------------- */
 ods pdf close;
 title;
