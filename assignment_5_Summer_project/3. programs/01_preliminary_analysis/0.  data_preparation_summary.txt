@@ -46,6 +46,27 @@ We first imported the raw clinical trial dataset from a CSV file and carried out
 - Religion (ptrelgn): Rare categories (<15) → “Other”; “Unknown/Not reported” → Missing
 - Race (race1): Recoded into 4 categories → White, Black/African American, Asian, Other
 
+
+--------------------------------------------------
+6. CONSTRUCTION OF STATE VARIABLES (T0, T12, T24)
+--------------------------------------------------
+
+After cleaning the dataset, we created state variables representing the patient status at baseline and follow-up visits:
+
+- Baseline (T0): All patients who completed the baseline assessment were assigned to state `"A"` (active).
+- Week 12 (T12):
+  - "D" if the patient had died (`wk12_dead = 1`),
+  - "A" if the FACT score change at week 12 (`fact_chg12`) was available,
+  - "F" otherwise (functional attrition).
+- Week 24 (T24):
+  - "D" if the patient had died (`wk24_dead = 1`),
+  - "A" if the FACT score change at week 24 (`fact_chg24`) was available,
+  - "F" otherwise.
+
+This classification provided the foundation for the multi-state modeling, allowing us to track patient 
+transitions between states (Active → Functional Attrition → Death).
+
+
 --------------------------------------------------
 6. FINAL DATASET
 --------------------------------------------------
@@ -53,4 +74,7 @@ We first imported the raw clinical trial dataset from a CSV file and carried out
 - Harmonized variable types
 - Reduced redundancy
 - Standardized categories
+- State variable
 - Ready for statistical analysis
+
+

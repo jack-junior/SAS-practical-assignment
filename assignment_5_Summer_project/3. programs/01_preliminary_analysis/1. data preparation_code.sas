@@ -12,7 +12,7 @@
 ods escapechar="^";
 
 /* Define PDF output file */
-ods pdf file="/home/u64176007/sas_pratical_assignment/assignment_4_reporting_visualization/assignment_4_output.pdf"
+ods pdf file="/home/u64176007/sas_pratical_assignment/assignment_5_Summer_project/3. programs/01_preliminary_analysis/data_preparation_output.pdf"
         style=journal;
 ods graphics / reset=all;                
 
@@ -31,7 +31,7 @@ proc odstext;
 footnote j=l "GAYI KOMI SELASSI, RA2422021010003, MSc Epidemiology & Biostatistics";
 
 /* Cover page title */
-title "Exploratory Analysis of the HEART Dataset: Reporting and Visualization";
+title "Summer project: data preparation";
 
 /* Links to GitHub and Portfolio */
 proc odstext;
@@ -43,7 +43,7 @@ run;
 /*-----------------------------------------------------------
  Step 1. Import dataset
 -----------------------------------------------------------*/
-libname data_SP '/home/u64176007/sas_pratical_assignment/assignment5_Summer_project/2. data_SP';
+libname data_SP '/home/u64176007/sas_pratical_assignment/assignment_5_Summer_project/2. data_SP';
 proc import datafile="/home/u64176007/sas_pratical_assignment/assignment_5_Summer_project/2. data_SP/data_brutes.csv"
     out=data_SP.data_brutes
     dbms=csv
@@ -160,12 +160,12 @@ run;
 
 /* ptrelgn – regroup rare categories into "Other" 
    First, count frequencies */
-proc freq data=data_SP.data_main_clean;
+proc freq data=data_SP.data_main_clean noprint;
     tables ptrelgn / out=data_SP.freq_rel;
 run;
 
 /* recode religion with <15 obs into "Other" */
-/* rare_rel contient les modalités rares */
+/* rare_rel encompasses rares categories */
 proc sql;
     create table rare_rel as
     select ptrelgn 
@@ -173,13 +173,13 @@ proc sql;
     where count < 15;
 quit;
 
-/* Créer un flag dans rare_rel */
+/* Create a flag in rare_rel */
 data rare_rel;
     set rare_rel;
     rare_flag = 1;
 run;
 
-/* Faire un merge */
+/* merge */
 proc sort data=data_SP.data_main_clean; by ptrelgn; run;
 proc sort data=rare_rel; by ptrelgn; run;
 
@@ -201,6 +201,35 @@ data data_SP.data_main_clean;
     set data_SP.data_main_clean;
     if race1 not in ("White", "Black or African American", "Asian") then race1 = "Other";
 run;
+
+
+/*-----------------------------------------------------------
+ Step 7. Define states
+-----------------------------------------------------------*/
+
+/* Restrict to baseline completers */
+data data_SP.data_main_clean;
+    set data_SP.data_main_clean;
+    if bsl_assess_complete = 1;
+run;
+
+/* At baseline (T0): everyone is "A" */
+data data_SP.data_main_clean;
+    set data_SP.data_main_clean;
+    length state_t0 state_t12 state_t24 $1.;
+    state_t0 = "A";
+
+    /* At week 12 (T12) */
+    if wk12_dead = 1 then state_t12 = "D";
+    else if not missing(fact_chg12) then state_t12 = "A";
+    else state_t12 = "F";
+
+    /* At week 24 (T24) */
+    if wk24_dead = 1 then state_t24 = "D";
+    else if not missing(fact_chg24) then state_t24 = "A";
+    else state_t24 = "F";
+run;
+
 
 /*-----------------------------------------------------------
  Final check

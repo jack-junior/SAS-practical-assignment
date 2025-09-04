@@ -9,13 +9,6 @@
 /* ----------------------------------------------------
    Step 1. Setup ODS for Output
    ---------------------------------------------------- */
-proc odstext;
-    p "Assignment 3 - Data Analysis" / style=[font_weight=bold];
-    p "Author   : Gayi Komi Selassi";
-    p "ID       : RA2422021010003";
-    p "Program  : MSc Epidemiology & Biostatistics";
-    p "Portfolio: ^{style [url='https://sites.google.com/view/gayikomiselassi/home'] Click Here}";
- run; 
  
 /* Escape character for hyperlinks */
 ods escapechar="^";
@@ -23,6 +16,14 @@ ods escapechar="^";
 /* Define PDF output file */
 ods pdf file="/home/u64176007/sas_pratical_assignment/assignment_3_data_analysis/assignment_3_output.pdf"
         style=journal;
+
+proc odstext;
+    p "Assignment 3 - Data Analysis" / style=[font_weight=bold];
+    p "Author   : Gayi Komi Selassi";
+    p "ID       : RA2422021010003";
+    p "Program  : MSc Epidemiology & Biostatistics";
+    p "Portfolio: ^{style [url='https://sites.google.com/view/gayikomiselassi/home'] Click Here}";
+ run; 
 
 /* Disable automatic page breaks initially */
 ods pdf startpage=never;  
