@@ -44,7 +44,7 @@ run;
  Step 1. Import dataset
 -----------------------------------------------------------*/
 libname data_SP '/home/u64176007/sas_pratical_assignment/assignment5_Summer_project/2. data_SP';
-proc import datafile="/home/u64176007/sas_pratical_assignment/assignment5_Summer_project/2. data_SP/data_brutes.csv"
+proc import datafile="/home/u64176007/sas_pratical_assignment/assignment_5_Summer_project/2. data_SP/data_brutes.csv"
     out=data_SP.data_brutes
     dbms=csv
     replace;
@@ -217,7 +217,7 @@ ods pdf startpage=now;
 
 
 proc odstext;
-    p " CHeck frequency table of categorical variable and confirm recoding :" / style=[font_weight=bold];
+    p "2. CHeck frequency table of categorical variable and confirm recoding :" / style=[font_weight=bold];
 run;
 
 proc freq data=data_SP.data_main_clean;
