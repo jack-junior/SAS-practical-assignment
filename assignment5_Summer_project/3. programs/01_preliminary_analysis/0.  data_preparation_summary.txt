@@ -1,0 +1,56 @@
+
+==============================
+   DATA PREPARATION SUMMARY
+==============================
+
+We first imported the raw clinical trial dataset from a CSV file and carried out a series of data preparation steps to obtain a cleaned analysis dataset.
+
+--------------------------------------------------
+1. DATA IMPORT AND INITIAL CLEANING
+--------------------------------------------------
+- Imported dataset (dataset_merged.csv) into SAS
+- Dropped redundant/duplicate variables:
+  • Multiple site identifiers
+  • Duplicate arm variables
+  • Free-text assessment notes
+  • Intermediate flags not needed
+
+--------------------------------------------------
+2. SELECTION OF VARIABLES OF INTEREST
+--------------------------------------------------
+- Extracted relevant variables:
+  • Patient identifiers
+  • Baseline clinical and psychosocial variables
+  • Trial arm
+  • Follow-up outcomes (Week 12, Week 24)
+  • Demographic characteristics
+
+--------------------------------------------------
+3. DATA HARMONIZATION AND TYPE CONVERSION
+--------------------------------------------------
+- Corrected coding inconsistencies (e.g., “>90” → “90” in age)
+- Converted numeric variables to categorical where appropriate (arm, wk12_dead, wk24_dead)
+- Ensured categorical variables treated as factors
+
+--------------------------------------------------
+4. HANDLING MISSING AND REDUNDANT OBSERVATIONS
+--------------------------------------------------
+- Deleted rows with only patient ID and treatment arm
+- Replaced empty strings (“”) with missing values in categorical variables
+
+--------------------------------------------------
+5. RECODING AND GROUPING OF CATEGORICAL VARIABLES
+--------------------------------------------------
+- Education (pthighedu): “Prefer not to answer” → “Other”
+- Marital status (ptmargstat): “Prefer not to answer” + “Unknown/Not reported” → Missing
+- Religion (ptrelgn): Rare categories (<15) → “Other”; “Unknown/Not reported” → Missing
+- Race (race1): Recoded into 4 categories → White, Black/African American, Asian, Other
+
+--------------------------------------------------
+6. FINAL DATASET
+--------------------------------------------------
+- Cleaned dataset: data_SP.data_main_clean
+- Harmonized variable types
+- Reduced redundancy
+- Standardized categories
+- Ready for statistical analysis
