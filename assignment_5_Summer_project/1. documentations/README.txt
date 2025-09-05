@@ -18,6 +18,7 @@ The project is organized into a modular and reproducible folder structure:
 
 - data/
     - data_brutes.csv : The primary raw data file Builed from the 9 datasets of the primary study.
+	- To Have access to the dataset please mail to "gayikomiselassi@gmail.com"
 
 - programs/
     - 01_preliminary_analysis/ : Scripts for data preparation, state definition,

@@ -1,0 +1,38 @@
+README – Descriptive Analysis
+
+1. Objective
+The descriptive analysis summarizes:
+1. Baseline characteristics of patients by attrition status at week 12 (T12) and week 24 (T24).
+2. Transition patterns of patients between states (T0→T12 and T12→T24).
+
+2. Dataset
+- Source: data_SP.data_main_clean_imputed
+- Population: Patients included after baseline filtering.
+- States defined:
+  - A = Active/Available
+  - F = Functional attrition (no assessment)
+  - D = Death
+
+3. Steps of Analysis
+
+ 3.1 Baseline Characteristics
+- Continuous variables (age, fact_bl, hads_pt_anx_bl, hads_pt_dep_bl, n12) summarized using PROC MEANS.
+- Categorical variables (sex, ecogps, tumrtyp, arm, ptmargstat, race1) analyzed using PROC FREQ with Chi-square tests.
+- Combined descriptive table produced with PROC TABULATE.
+- Results stratified by state_t12 and state_t24.
+
+ 3.2 Transition Analysis
+- Transition tables constructed with PROC FREQ:
+  - T0 → T12
+  - T12 → T24
+- Each transition cell reports count and row percentage.
+- Visualization performed with PROC SGPANEL (heatmap of transitions).
+
+4. Outputs
+1. Tables of baseline characteristics by attrition status at T12 and T24.
+2. Transition tables (counts and row percentages).
+3. Heatmap showing patient flows between states.
+
+5. Notes
+- Percentages in transitions correspond to row percentages.
+- Heatmap highlights transition intensity (counts) with labels showing both count and overall proportion.

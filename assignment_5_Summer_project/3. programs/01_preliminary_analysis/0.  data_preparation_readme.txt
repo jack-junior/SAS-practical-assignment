@@ -67,14 +67,27 @@ This classification provided the foundation for the multi-state modeling, allowi
 transitions between states (Active → Functional Attrition → Death).
 
 
+ --------------------------------------------------
+6. Handling Missing Data
 --------------------------------------------------
-6. FINAL DATASET
+- We first quantified missingness in both numeric (PROC MEANS) and categorical (PROC FREQ) variables, and visualized 
+the results with bar plots. 
+- Variables with more than 15% missing values were removed to ensure data quality. For the remaining categorical variables with
+limited missingness (pthighedu, ptmargstat), we applied mode imputation, replacing missing values with the most frequent category. 
+- A final check confirmed that missing data was substantially reduced, resulting in a clean and consistent data…
+
+
+ --------------------------------------------------
+7. Output
 --------------------------------------------------
-- Cleaned dataset: data_SP.data_main_clean
+- Cleaned dataset: data_SP.data_main_clean_imputed
 - Harmonized variable types
 - Reduced redundancy
 - Standardized categories
 - State variable
+- Handle missingness
 - Ready for statistical analysis
+
+
 
 

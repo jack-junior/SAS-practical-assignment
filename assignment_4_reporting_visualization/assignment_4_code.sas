@@ -28,8 +28,6 @@ proc odstext;
     p "Portfolio: ^{style [url='https://sites.google.com/view/gayikomiselassi/home'] Click Here}";
  run; 
 
-/* Custom footer*/
-footnote j=l "GAYI KOMI SELASSI, RA2422021010003, MSc Epidemiology & Biostatistics";
 
 /* Cover page title */
 title "Exploratory Analysis of the HEART Dataset: Reporting and Visualization";
