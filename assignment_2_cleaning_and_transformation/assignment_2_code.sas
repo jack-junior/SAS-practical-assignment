@@ -105,6 +105,8 @@ run;
 proc odstext;
     p "COMMENT:" / style=[font_weight=bold];
     p "No missing value were identify in te new created variables";
+    p " ";
+    p " ";
     
 run;
 

@@ -148,6 +148,11 @@ proc odstext;
    p "";
     p "COMMENT:" / style=[font_weight=bold];
     p "There is no missing value in the dataset.";
+    p "";
+    p "";
+    p "";
+    
+
 run;
 
 /* ----------------------------------------------------

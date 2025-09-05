@@ -142,6 +142,8 @@ quit;
    ---------------------------------------------------- */
 
 proc odstext;
+    p "";
+    p "";
     p "GitHub Repository: ^{style [url='https://github.com/jack-junior/SAS-practical-assignment'] Click Here}";
     p "Portfolio: ^{style [url='https://sites.google.com/view/gayikomiselassi/home'] Click Here}";
 run;
