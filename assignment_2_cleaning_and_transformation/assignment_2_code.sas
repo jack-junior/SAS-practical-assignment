@@ -18,7 +18,7 @@ ods pdf file="/home/u64176007/sas_pratical_assignment/assignment_2_cleaning_and_
         style=journal;
         
 proc odstext;
-    p "Assignment 3 - Data Analysis" / style=[font_weight=bold];
+    p "Assignment 2 - Data Cleaning and Transformation" / style=[font_weight=bold];
     p "Author   : Gayi Komi Selassi";
     p "ID       : RA2422021010003";
     p "Program  : MSc Epidemiology & Biostatistics";

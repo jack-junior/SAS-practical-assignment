@@ -21,7 +21,7 @@ ods graphics / reset=all;
 ods pdf startpage=never; 
 
 proc odstext;
-    p "Assignment 3 - Data Analysis" / style=[font_weight=bold];
+    p "Assignment 4 - Reporting and Visualization" / style=[font_weight=bold];
     p "Author   : Gayi Komi Selassi";
     p "ID       : RA2422021010003";
     p "Program  : MSc Epidemiology & Biostatistics";
