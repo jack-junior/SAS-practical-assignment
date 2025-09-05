@@ -46,7 +46,7 @@ run;
 /*  Transition T0 → T12                                 */
 
 proc odstext;
-    p "1. Transition Table T0 → T12: Count (Proportion):" / style=[font_weight=bold];
+    p "1. Transition Table from T0 to T12: Count (Proportion):" / style=[font_weight=bold];
 run;
 proc freq data=data_SP.data_main_clean_imputed;
     tables state_t0*state_t12 / out=data_SP.trans01 outpct nocol nopercent;
@@ -55,16 +55,26 @@ run;
 /* Add panel variable + rename states for consistency */
 data data_SP.trans01;
     set data_SP.trans01;
-    transition = "T0→T12";
+    transition = "T0 to T12";
     From = state_t0;   /* Source */
     To = state_t12;  /* Target */
     label = catx(" ", count, "(", put(percent, 5.1), "%)"); 
 run;
 
+
+proc odstext;
+    p"";
+    p"";
+    p"";
+    p"";
+    p"";
+    p"";
+run;
+
 /*  Transition T12 → T24                                */
 
 proc odstext;
-    p "2. Transition Table T12 → T24: Count (Proportion):" / style=[font_weight=bold];
+    p "2. Transition Table from T12 to T24: Count (Proportion):" / style=[font_weight=bold];
 run;
 
 proc freq data=data_SP.data_main_clean_imputed;
@@ -74,7 +84,7 @@ run;
 /* Add panel variable + rename states for consistency */
 data data_SP.trans12;
     set data_SP.trans12;
-    transition = "T12→T24";
+    transition = "T12 to T24";
     From = state_t12;  /* Source */
     To = state_t24;  /* Target */
     label = catx(" ", count, "(", put(percent, 5.1), "%)");
@@ -87,12 +97,14 @@ data data_SP.transitions;
     length transition $10;   /* enough to store both labels */
     set data_SP.trans01 data_SP.trans12;
 run;
+
+ods pdf startpage=now;
          
 /*   Transition visualisation  */
 
 
 proc odstext;
-    p "3. Heatmap Flow of patients between states (transition counts and overall percent from T0→T12 and T12→T24):" / style=[font_weight=bold];
+    p "3. Heatmap Flow of patients between states (transition counts and overall percent from T0 to T12 and T12 to T24):" / style=[font_weight=bold];
 run;
 proc sgpanel data=data_SP.transitions;
     panelby transition / layout=columnlattice onepanel novarname;
@@ -104,7 +116,11 @@ proc sgpanel data=data_SP.transitions;
     title Heatmap transition counts from T0→T12 and T12→T24);
 run;
 
+proc odstext;
+    p "percentage displayed are overall percentage and not row percent:" / style=[font_weight=bold];
+run;
 
+ods pdf startpage=now;
 
 /* ============================================================================
     Step 2. Baseline Characteristics by attrition status at Week 12

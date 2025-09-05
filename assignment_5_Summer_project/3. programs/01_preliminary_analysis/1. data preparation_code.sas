@@ -397,6 +397,8 @@ run;
 
 ods exclude none;
 
+ods pdf startpage=now;
+
 /* Horizontal bar plot */
 
 proc odstext;
