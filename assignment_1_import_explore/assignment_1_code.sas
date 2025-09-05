@@ -130,6 +130,8 @@ title2 "3. Summary Statistics (Mean, Median, Minimum, Maximum)";
 proc means data=data.heart mean median min max maxdec=2;
 run;
 
+
+
 ods pdf startpage=now;
 
 
@@ -142,6 +144,11 @@ title2 "4. Missing Values by Variable";
 proc means data=data.heart n nmiss;
 run;
 
+proc odstext;
+   p "";
+    p "COMMENT:" / style=[font_weight=bold];
+    p "There is no missing value in the dataset.";
+run;
 
 /* ----------------------------------------------------
    Step 9. Add References (Links)
